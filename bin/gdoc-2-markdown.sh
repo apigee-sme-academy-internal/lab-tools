@@ -45,6 +45,11 @@ perl -0777 -i.original -pe 's/```\s+!lang\s+/```/igs' "${QWIKLAB_DIR}/instructio
 perl -0777 -i.original -pe 's/```\s*!md-start//igs' "${QWIKLAB_DIR}/instructions/en.md"
 perl -0777 -i.original -pe 's/!md-end\s*```//igs' "${QWIKLAB_DIR}/instructions/en.md"
 
+# Fix bold tags
+perl -0777 -i.original -pe 's#\*\*(.+?)\*\*#<b>\1</b>#g' "${QWIKLAB_DIR}/instructions/en.md"
+
+
+
 rm -f "${QWIKLAB_DIR}/instructions/en.md.original"
 
 # Replace images
