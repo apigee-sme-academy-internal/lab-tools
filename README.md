@@ -67,3 +67,23 @@ echo "hello world"
 ```
 
 You can use any language tag that understood by Qwiklabs.
+
+### gdoc-2-markdown.sh - MD Pass-through
+
+Some features of Qwiklabs require the use special markdown tags. 
+From your Google Doc you can pass-through raw MD text using a code-block with special tags
+at the beginning and the end.
+
+Here is an example of how to pass-through Qwiklabs specific activity tracking
+
+```shell script
+!md-start
+<ql-activity-tracking step=1>
+    Check that Kubernetes secret was created 
+</ql-activity-tracking>
+!md-end
+```
+
+
+
+

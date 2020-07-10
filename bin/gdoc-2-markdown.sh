@@ -38,7 +38,13 @@ rm -rf "${QWIKLAB_DIR}/instructions/en.md"
 cp "${CONVERTED_LAB_DIR}/index.md" "${QWIKLAB_DIR}/instructions/en.md"
 
 # Post-process MD file
+# Syntax highlighting
 perl -0777 -i.original -pe 's/```\s+!lang\s+/```/igs' "${QWIKLAB_DIR}/instructions/en.md"
+
+# MD pass-through
+perl -0777 -i.original -pe 's/```\s*!md-start//igs' "${QWIKLAB_DIR}/instructions/en.md"
+perl -0777 -i.original -pe 's/!md-end\s*```//igs' "${QWIKLAB_DIR}/instructions/en.md"
+
 rm -f "${QWIKLAB_DIR}/instructions/en.md.original"
 
 # Replace images
