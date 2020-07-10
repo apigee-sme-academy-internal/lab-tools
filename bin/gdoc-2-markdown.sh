@@ -48,7 +48,11 @@ perl -0777 -i.original -pe 's/!md-end\s*```//igs' "${QWIKLAB_DIR}/instructions/e
 # Fix bold tags
 perl -0777 -i.original -pe 's#\*\*(.+?)\*\*#<b>\1</b>#g' "${QWIKLAB_DIR}/instructions/en.md"
 
+# Remove metadata
+perl -0777 -i.original -pe 's#---.+?---##is' "${QWIKLAB_DIR}/instructions/en.md"
 
+# Remove feedback link
+perl -0777 -i.original -pe 's#\[\s*codelab\s*feedback\s*]\(.+?\)##is' "${QWIKLAB_DIR}/instructions/en.md"
 
 rm -f "${QWIKLAB_DIR}/instructions/en.md.original"
 
