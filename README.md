@@ -9,7 +9,7 @@ the lab content itself.
 Clone the repo
 
 ```shell script
-git clone git@github.com:apigee-sme-academy-internal/lab-tools.git
+git clone https://github.com/apigee-sme-academy-internal/lab-tools.git
 ```
 
 Add the bin directory into your path
