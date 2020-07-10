@@ -15,7 +15,7 @@ git clone git@github.com:apigee-sme-academy-internal/lab-tools.git
 Add the bin directory into your path
 
 ```shell script
-export PATH=`$(pwd)/lab-tools/bin:$PATH`
+export PATH="$(pwd)/lab-tools/bin:$PATH"
 ```
 
 ## gdoc-2-markdown.sh
