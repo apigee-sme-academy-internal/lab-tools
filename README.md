@@ -85,5 +85,51 @@ Here is an example of how to pass-through Qwiklabs specific activity tracking
 ```
 
 
+## update-lab-instructions.sh
 
+This script is help smooth out the workflow when updating lab instructions. The idea is that you simply
+work on the Google doc, to make your changes. Then, you use this script to update the local Git repo
+with the latest changes. 
+
+This is the usage
+
+```shell script
+update-lab-instructions.sh /path/to/qwiklabs/repo lab-prefix gdoc-id
+```
+
+Here is of how to use it.
+
+First, make sure you clone the Qwiklabs git repo that has your lab:
+```
+git clone git@github.com:CloudVLab/gcp-enablement-content.git
+```
+Switch to the Qwiklabs repo
+
+```shell script
+cd gcp-enablement-content
+```
+ 
+Then, create a branch for your lab changes:
+```
+git checkout -b update_enbl007_lab origin/master
+```
+
+Then run the script to update instructions for one of the labs:
+```shell script
+update-lab-instructions.sh . enbl007 15hofQmOqNVO3IxquS3sAKDmUYJ5ju9Yq6l4gM7nCLpI
+```
+
+This will update the contents of:
+
+```
+gcp-enablement-content/labs/enbl007*/en.md
+gcp-enablement-content/labs/enbl007*/img/*
+```
+
+Finally, inspect the content changes, create a new commit and push the branch.
+```shell script
+git add labs/enbl007*
+git commit -m "Update enbl007 lab"
+git push origin update_enbl007_lab
+```
 
