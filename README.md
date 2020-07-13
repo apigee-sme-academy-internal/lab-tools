@@ -87,17 +87,19 @@ Here is an example of how to pass-through Qwiklabs specific activity tracking
 
 ## update-lab-instructions.sh
 
-This script is help smooth out the workflow when updating lab instructions. The idea is that you simply
-work on the Google doc, to make your changes. Then, you use this script to update the local Git repo
-with the latest changes. 
 
-This is the usage
+This script helps smooth out the workflow when updating lab instructions when using the Qwiklabs git flow.
+
+The idea is that you simply work on the Google doc to make your changes. 
+Then, you use this script to update the local Git repo with the latest changes. 
+
+This is the usage:
 
 ```shell script
 update-lab-instructions.sh /path/to/qwiklabs/repo lab-prefix gdoc-id
 ```
 
-Here is of how to use it.
+Here is example of how to use it:
 
 First, make sure you clone the Qwiklabs git repo that has your lab:
 ```
@@ -132,4 +134,3 @@ git add labs/enbl007*
 git commit -m "Update enbl007 lab"
 git push origin update_enbl007_lab
 ```
-
