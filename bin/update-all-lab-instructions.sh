@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 
 export QWIKLABS_REPO_DIR="$1"
 

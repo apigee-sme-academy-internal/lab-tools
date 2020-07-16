@@ -29,7 +29,7 @@ then
 fi
 
 # Check that lab directory exists
-export LAB_DIR=$(find  "${QWIKLABS_REPO_DIR}/labs" -type d -name "${LAB_PREFIX}*" | head -1)
+export LAB_DIR=$(find  "${QWIKLABS_REPO_DIR}/labs" -type d -name "${LAB_PREFIX}*" 2> /dev/null | head -1)
 echo ${LAB_DIR}
 if [ ! -d "${LAB_DIR}" ]; then
   echo "ERROR: Could not locate lab with prefix ${LAB_PREFIX} in ${QWIKLABS_REPO_DIR}/labs"  && exit 1;
