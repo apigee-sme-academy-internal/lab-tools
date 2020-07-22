@@ -56,6 +56,10 @@ perl -0777 -i.original -pe 's#\[\s*codelab\s*feedback\s*]\(.+?\)##is' "${QWIKLAB
 
 rm -f "${QWIKLAB_DIR}/instructions/en.md.original"
 
+"${DIR}/download-images.sh" "${QWIKLAB_DIR}/instructions/en.md" "${CONVERTED_LAB_DIR}/img"
+"${DIR}/replace-images.sh" "${QWIKLAB_DIR}/instructions/en.md" > "${QWIKLAB_DIR}/instructions/en.md.temp"
+mv "${QWIKLAB_DIR}/instructions/en.md.temp" "${QWIKLAB_DIR}/instructions/en.md"
+
 # Replace images
 rm -rf "${QWIKLAB_DIR}/instructions/img"
 cp -R "${CONVERTED_LAB_DIR}/img" "${QWIKLAB_DIR}/instructions"

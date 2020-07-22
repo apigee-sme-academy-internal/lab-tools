@@ -25,6 +25,9 @@ format used by Qwiklabs. The script itself uses the claat tool to do the
 conversion. You do not need to have claat installed in your system. The claat 
 binary (for Darwin) is already available in the lab-tools bin directory.
 
+Additionally, the script downloads and replaces images that the claat tool misses.
+
+
 Example usage:
 
 ```shell script
