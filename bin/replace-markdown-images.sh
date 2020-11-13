@@ -22,7 +22,7 @@ fi
 
 # Replace URls
 cat  "${MD_FILE}" |
-    perl -ne 'if (/(.+<img\s+src=")(https:\/\/[^"]+?)(".+)/ ) {
+    perl -ne 'if (/(.*<img.+src=")(https:\/\/[^"]+?)(".+)/ ) {
                 my $h = `md5 -q -s "$2"`;
                 chomp $h;
                 print $1."img/".$h.".png".$3."\n"

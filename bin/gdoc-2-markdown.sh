@@ -23,7 +23,8 @@ if [ -z "${GDOC_ID}" ] ; then
 fi
 
 if [ ! -d "${QWIKLAB_DIR}" ] ; then
-    echo "ERROR: QWIKLAB directory is required" && usage && exit 1;
+    #echo "ERROR: QWIKLAB directory is required" && usage && exit 1;
+    mkdir -p "${QWIKLAB_DIR}"
 fi
 
 TEMP_DIR=$(mktemp -d -t claat-qwiklab)
@@ -32,6 +33,11 @@ pushd "${TEMP_DIR}" &> /dev/null
 $CLAAT export -f md "${GDOC_ID}"
 export CONVERTED_LAB_DIR="$(pwd)/$(ls -1 | head -1)"
 popd &> /dev/null
+
+if [ ! -d "${QWIKLAB_DIR}/instructions" ] ; then
+  mkdir -p "${QWIKLAB_DIR}/instructions"
+  mkdir -p "${QWIKLAB_DIR}/instructions/img"
+fi
 
 # Replace MD file
 rm -rf "${QWIKLAB_DIR}/instructions/en.md"
@@ -56,8 +62,8 @@ perl -0777 -i.original -pe 's#\[\s*codelab\s*feedback\s*]\(.+?\)##is' "${QWIKLAB
 
 rm -f "${QWIKLAB_DIR}/instructions/en.md.original"
 
-"${DIR}/download-images.sh" "${QWIKLAB_DIR}/instructions/en.md" "${CONVERTED_LAB_DIR}/img"
-"${DIR}/replace-images.sh" "${QWIKLAB_DIR}/instructions/en.md" > "${QWIKLAB_DIR}/instructions/en.md.temp"
+"${DIR}/download-markdown-images.sh" "${QWIKLAB_DIR}/instructions/en.md" "${CONVERTED_LAB_DIR}/img"
+"${DIR}/replace-markdown-images.sh" "${QWIKLAB_DIR}/instructions/en.md" > "${QWIKLAB_DIR}/instructions/en.md.temp"
 mv "${QWIKLAB_DIR}/instructions/en.md.temp" "${QWIKLAB_DIR}/instructions/en.md"
 
 # Replace images
