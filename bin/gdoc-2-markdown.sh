@@ -31,7 +31,7 @@ TEMP_DIR=$(mktemp -d -t claat-qwiklab)
 
 pushd "${TEMP_DIR}" &> /dev/null
 $CLAAT export -f md "${GDOC_ID}"
-export CONVERTED_LAB_DIR="$(pwd)/$(ls -1 | head -1)"
+export CONVERTED_LAB_DIR="$(pwd)"
 popd &> /dev/null
 
 if [ ! -d "${QWIKLAB_DIR}/instructions" ] ; then
