@@ -31,7 +31,9 @@ TEMP_DIR=$(mktemp -d -t claat-qwiklab)
 
 pushd "${TEMP_DIR}" &> /dev/null
 $CLAAT export -f md "${GDOC_ID}"
-cd * # switch into the lab directory
+if [ ! -f codelab.json ] ; then
+  cd * # switch into the lab directory
+fi
 export CONVERTED_LAB_DIR="$(pwd)"
 popd &> /dev/null
 
