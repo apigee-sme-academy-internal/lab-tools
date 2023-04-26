@@ -31,6 +31,7 @@ TEMP_DIR=$(mktemp -d -t claat-qwiklab)
 
 pushd "${TEMP_DIR}" &> /dev/null
 $CLAAT export -f md "${GDOC_ID}"
+cd * # switch into the lab directory
 export CONVERTED_LAB_DIR="$(pwd)"
 popd &> /dev/null
 
@@ -59,6 +60,14 @@ perl -0777 -i.original -pe 's#---.+?---##is' "${QWIKLAB_DIR}/instructions/en.md"
 
 # Remove feedback link
 perl -0777 -i.original -pe 's#\[\s*codelab\s*feedback\s*]\(.+?\)##is' "${QWIKLAB_DIR}/instructions/en.md"
+
+# fix warning boxes
+perl -0777 -i.original -pe 's/^> aside negative((?:\R^>.*)*)/<div><ql-warningbox>\1\n<\/ql-warningbox><\/div>/gm' "${QWIKLAB_DIR}/instructions/en.md"
+perl -i.original -pe 's/^> // if (/^<div><ql-warningbox>/../^<\/ql-warningbox><\/div>/);' "${QWIKLAB_DIR}/instructions/en.md"
+
+# fix info boxes
+perl -0777 -i.original -pe 's/^> aside positive((?:\R^>.*)*)/<div><ql-infobox>\1\n<\/ql-infobox><\/div>/gm' "${QWIKLAB_DIR}/instructions/en.md"
+perl -i.original -pe 's/^> // if (/^<div><ql-infobox>/../^<\/ql-infobox><\/div>/);' "${QWIKLAB_DIR}/instructions/en.md"
 
 rm -f "${QWIKLAB_DIR}/instructions/en.md.original"
 
