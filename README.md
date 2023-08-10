@@ -3,6 +3,9 @@
 This repo holds common tools that are used by lab creators while developing
 the lab content itself.
 
+The rendering of Google Docs to Qwiklabs Markdown format relies on [claat](https://github.com/googlecodelabs/tools/tree/main/claat).
+Please follow the claat instructions on how to install it.
+
 ## How to use the tools
 
 
@@ -22,8 +25,7 @@ export PATH="$(pwd)/lab-tools/bin:$PATH"
 
 This script takes an existing Google Doc and converts it to the markdown
 format used by Qwiklabs. The script itself uses the claat tool to do the
-conversion. You do not need to have claat installed in your system. The claat 
-binary (for Darwin) is already available in the lab-tools bin directory.
+conversion.
 
 Additionally, the script downloads and replaces images that the claat tool misses.
 
@@ -65,7 +67,7 @@ echo "hello world"
 ```shell script
 !lang json
 {
-  "foo": "bar"  
+  "foo": "bar"
 }
 ```
 
@@ -73,7 +75,7 @@ You can use any language tag that understood by Qwiklabs.
 
 ### gdoc-2-markdown.sh - MD Pass-through
 
-Some features of Qwiklabs require the use special markdown tags. 
+Some features of Qwiklabs require the use special markdown tags.
 From your Google Doc you can pass-through raw MD text using a code-block with special tags
 at the beginning and the end.
 
@@ -82,7 +84,7 @@ Here is an example of how to pass-through Qwiklabs specific activity tracking
 ```shell script
 !md-start
 <ql-activity-tracking step=1>
-    Check that Kubernetes secret was created 
+    Check that Kubernetes secret was created
 </ql-activity-tracking>
 !md-end
 ```
@@ -93,8 +95,8 @@ Here is an example of how to pass-through Qwiklabs specific activity tracking
 
 This script helps smooth out the workflow when updating lab instructions when using the Qwiklabs git flow.
 
-The idea is that you simply work on the Google doc to make your changes. 
-Then, you use this script to update the local Git repo with the latest changes. 
+The idea is that you simply work on the Google doc to make your changes.
+Then, you use this script to update the local Git repo with the latest changes.
 
 This is the usage:
 
@@ -113,7 +115,7 @@ Switch to the Qwiklabs repo
 ```shell script
 cd gcp-enablement-content
 ```
- 
+
 Then, create a branch for your lab changes:
 ```
 git checkout -b update_enbl007_lab origin/master

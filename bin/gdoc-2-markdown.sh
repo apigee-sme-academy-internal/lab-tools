@@ -11,10 +11,9 @@ usage() {
 export GDOC_ID="$1"
 export QWIKLAB_DIR="$2"
 
-export CLAAT=$DIR/claat.$(uname -s)
-
-if [ ! -f "${CLAAT}" ] ; then
-  echo "ERROR: No claat tool found for your Operating System ($(uname -s)"
+if [ -z "$(which claat)" ] ; then
+  echo "ERROR: Claat is not available on your \$PATH. Check out the instuctions here: https://github.com/googlecodelabs/tools/tree/main/claat"
+  exit
 fi
 
 
@@ -30,7 +29,7 @@ fi
 TEMP_DIR=$(mktemp -d -t claat-qwiklab)
 
 pushd "${TEMP_DIR}" &> /dev/null
-$CLAAT export -f md "${GDOC_ID}"
+claat export -f md "${GDOC_ID}"
 if [ ! -f codelab.json ] ; then
   cd * # switch into the lab directory
 fi
