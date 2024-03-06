@@ -27,7 +27,7 @@ if [ ! -d "${CODELAB_DIR}" ] ; then
     mkdir -p "${CODELAB_DIR}"
 fi
 
-TEMP_DIR=$(mktemp -d -t claat-codelab)
+TEMP_DIR=$(mktemp -d -t claat-codelab.XXXXXXXXXX)
 
 pushd "${TEMP_DIR}" &> /dev/null
 $CLAAT export -f html "${GDOC_ID}"
