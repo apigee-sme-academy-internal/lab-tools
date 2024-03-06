@@ -26,7 +26,7 @@ if [ ! -d "${QWIKLAB_DIR}" ] ; then
     mkdir -p "${QWIKLAB_DIR}"
 fi
 
-TEMP_DIR=$(mktemp -d -t claat-qwiklab)
+TEMP_DIR=$(mktemp -d -t claat-qwiklab.XXXXXXXXXX)
 
 pushd "${TEMP_DIR}" &> /dev/null
 claat export -f md "${GDOC_ID}"
